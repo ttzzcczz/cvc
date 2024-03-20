@@ -1,36 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation</title>
+    <title>TV Series Playlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        li {
+            margin: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        a:hover {
+            background-color: #8b0000;
+            color: #fff;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Navigation to Pages</h1>
-    <ul id="pageButtons"></ul>
+    <ul id="playlist"></ul>
 
     <script>
-        function getPageName(pageNumber) {
-            if (pageNumber < 1 || pageNumber > 78) {
-                return "Invalid page number";
-            }
-            return "(" + pageNumber + ").html";
-        }
+        const playlist = document.getElementById('playlist');
 
-        function goToPage(pageNumber) {
-            var pageURL = getPageName(pageNumber);
-            window.location.href = pageURL;
-        }
-
-        var pageButtons = document.getElementById('pageButtons');
-        for (var i = 1; i <= 78; i++) {
-            var button = document.createElement('button');
-            button.textContent = 'Page ' + i;
-            button.setAttribute('onclick', 'goToPage(' + i + ')');
-            var listItem = document.createElement('li');
-            listItem.appendChild(button);
-            pageButtons.appendChild(listItem);
+        // Generate links for pages up to index(78).html
+        for (let i = 1; i <= 78; i++) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `index(${i}).html`;
+            a.textContent = `vidio (${i})`;
+            li.appendChild(a);
+            playlist.appendChild(li);
         }
     </script>
 </body>
+
 </html>
